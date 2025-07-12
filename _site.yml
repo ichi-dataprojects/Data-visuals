@@ -1,0 +1,34 @@
+name: "."
+title: "Data Storytelling"
+description: "."
+
+output_dir: "docs"
+theme: custom.css
+
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Censorship"
+      href: Censorship.html
+    - text: "Diet1"
+      href: Diet1.html
+    - text: "Diet2"
+      href: Diet2.html
+    - text: "Obesity"
+      href: Obesity.html
+
+  right:
+    - icon: email
+      href: mailto:ichidataanalysis@gmail.com
+      text: Email
+      target: _blank
+    - icon: github
+      href: https://github.com/ichi-dataprojects
+      target: _blank
+    - icon: linkedin
+      href: https://www.linkedin.com/in/christmore-setebe-089b0a172
+      target: _blank
+    - icon: instagram
+      href: https://instagram.com/ichidatascience
+      target: _blank

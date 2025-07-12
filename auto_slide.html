@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Slide Navigation</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ================================
+      Base Styles
+    ================================= */
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    /* ================================
+      Navbar Styles (matching site.yml)
+    ================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      border-bottom: 1px solid #222;
+      z-index: 9999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+      box-sizing: border-box;
+    }
+
+    /* Left menu items container */
+    #navbar .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Right menu items container */
+    #navbar .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* Navigation links */
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link:hover {
+      background-color: #4e54c8;
+      color: #fff;
+    }
+
+    /* Progress bar container */
+    .progress-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    /* Progress bar fill */
+    .progress-bar {
+      height: 100%;
+      background-color: #00bfff;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* Nav items positioning */
+    .nav-item {
+      position: relative;
+      margin: 0;
+    }
+
+    /* Social icons style (right side) */
+    .nav-right .nav-link i {
+      font-size: 20px;
+    }
+
+    /* Left nav icons style */
+    .nav-left .nav-link i {
+      font-size: 18px;
+    }
+
+    /* Page content padding to avoid nav overlap */
+    #content {
+      margin-top: 70px;
+      padding: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #navbar {
+        justify-content: center;
+      }
+
+      #navbar .nav-left,
+      #navbar .nav-right {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div id="navbar">
+  <!-- Left menu -->
+  <div class="nav-left">
+    <div class="nav-item">
+      <div class="progress-container"><div id="progress-home" class="progress-bar"></div></div>
+      <a href="index.html" class="nav-link"><i class="fas fa-house"></i> Home</a>
+    </div>
+    <div class="nav-item">
+      <div class="progress-container"><div id="progress-censorship" class="progress-bar"></div></div>
+      <a href="Censorship.html" class="nav-link">Censorship</a>
+    </div>
+    <div class="nav-item">
+      <div class="progress-container"><div id="progress-diet1" class="progress-bar"></div></div>
+      <a href="Diet1.html" class="nav-link">Diet1</a>
+    </div>
+    <div class="nav-item">
+      <div class="progress-container"><div id="progress-diet2" class="progress-bar"></div></div>
+      <a href="Diet2.html" class="nav-link">Diet2</a>
+    </div>
+    <div class="nav-item">
+      <div class="progress-container"><div id="progress-obesity" class="progress-bar"></div></div>
+      <a href="Obesity.html" class="nav-link">Obesity</a>
+    </div>
+  </div>
+
+  <!-- Right social icons -->
+  <div class="nav-right">
+    <div class="nav-item">
+      <a href="mailto:ichidataanalysis@gmail.com" class="nav-link" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="nav-item">
+      <a href="https://github.com/ichi-dataprojects" class="nav-link" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="nav-item">
+      <a href="https://www.linkedin.com/in/christmore-setebe-089b0a172" class="nav-link" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="nav-item">
+      <a href="https://instagram.com/ichidatascience" class="nav-link" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div id="content">
+  <!-- Your page content here -->
+</div>
+
+<!-- Auto Slide Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const interval = 180000; // 3 minutes per slide (in milliseconds)
+  const pages = [
+    { id: 'progress-home', url: 'index.html' },
+    { id: 'progress-censorship', url: 'Censorship.html' },
+    { id: 'progress-diet1', url: 'Diet1.html' },
+    { id: 'progress-diet2', url: 'Diet2.html' },
+    { id: 'progress-obesity', url: 'Obesity.html' }
+  ];
+
+  let currentIndex = pages.findIndex(page => window.location.pathname.includes(page.url));
+  if (currentIndex === -1) currentIndex = 0;
+
+  let elapsed = 0;
+  let currentProgressBar = document.getElementById(pages[currentIndex].id);
+
+  function updateProgress() {
+    if (elapsed >= interval) {
+      // Reset current progress bar
+      if(currentProgressBar) currentProgressBar.style.width = '0%';
+
+      currentIndex = (currentIndex + 1) % pages.length;
+      currentProgressBar = document.getElementById(pages[currentIndex].id);
+      elapsed = 0;
+      window.location.href = pages[currentIndex].url;
+    } else {
+      elapsed += 100;
+      if (currentProgressBar) {
+        currentProgressBar.style.width = (elapsed / interval) * 100 + '%';
+      }
+      setTimeout(updateProgress, 100);
+    }
+  }
+
+  updateProgress();
+});
+</script>
+
+</body>
+</html>

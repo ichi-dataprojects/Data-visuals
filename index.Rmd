@@ -1,0 +1,16 @@
+---
+title: "Data Story Telling"
+description: "Explore the power of data visualization with Ichi Data Solution — Interpret, Communicate, Highlight, Influence."
+output: 
+  distill::distill_article:
+    self_contained: false
+    includes:
+      in_header: auto_slide.html
+    css: "custom.css"
+
+---
+
+
+This platform goes beyond visuals it’s a storytelling engine powered by data. Each chart, map, and interaction is crafted to make complex information intuitive and engaging. If you're seeking custom data visualization services that turn raw data into compelling insights, don't hesitate to reach out through the contact or social media links above.
+
+Let **Ichi Data Solution** bring clarity, impact, and influence to your data-driven projects.
